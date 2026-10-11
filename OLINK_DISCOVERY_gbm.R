@@ -1,11 +1,11 @@
-# Build the survival outcome: time to MACE (days2mace) and event indicator (mace = 1 if MACE occurred, 0 if censored)
-y <- Surv(time = train_data$days2mace, event = train_data$mace)
+# Build the survival outcome: time to event and event indicator 
+y <- Surv(time = train_data$days2event, event = train_data$event)
 
-# Predictor matrix: drop the first five columns (ID, outcome, weight and other non-predictor variables)
+# Predictor matrix
 x <- data
 
-# Observation weights for the MACE outcome (one per row, same order as x and y)
-weight <- train_data$w_mace
+# Observation weights 
+weight <- train_data$w_event
 
 # Fix the random seed for reproducibility
 set.seed(123)
